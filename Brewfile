@@ -1,0 +1,33 @@
+cask_args appdir: '/Applications'
+tap 'caskroom/cask'
+
+brew 'curl'
+brew 'git'
+brew 'jq'
+brew 'mackup'
+brew 'mas'
+brew 'openssl'
+brew 'rmtrash'
+brew 'sshrc'
+brew 'telnet'
+
+# フロントエンド系は入れる
+brew 'nodebrew'
+brew 'yarn' --ignore-dependencies
+
+cask 'bettertouchtool'
+cask 'cyberduck'
+cask 'docker'
+cask 'github'
+cask 'google-chrome'
+cask 'google-japanese-ime'
+cask 'google-cloud-sdk'
+cask 'karabiner-elements'
+cask 'ngrok'
+cask 'visual-studio-code'
+cask 'slack'
+cask 'box-sync'
+cask 'postman'
+cask 'evernote'
+cask 'parallels-desktop'
+cask 'zoomus'
