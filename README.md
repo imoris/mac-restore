@@ -3,7 +3,7 @@
 ## 前準備
 - 移行元Macでmackup実行
 ``` bash
-mackup backup
+$ mackup backup
 ```
 
 - 移行先MacでのhomebrewおよびDropboxのinstall
@@ -15,11 +15,9 @@ $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/inst
 $ brew cask install dropbox
 ```
 
-## アプリ再インストール/dotfilesリストア手順
+## アプリ再インストール / dotfilesリストア手順
 ``` bash
-# download Brewfile
-$ git clone [this repository]
-$ cd mac-restore
+$ cd [where Brewfile is located]
 
 # install necessary apps
 $ brew bundle
