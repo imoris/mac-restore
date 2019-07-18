@@ -13,7 +13,6 @@ brew 'telnet'
 
 # フロントエンド系は入れる
 brew 'nodebrew'
-brew 'yarn' --ignore-dependencies
 
 cask 'bettertouchtool'
 cask 'cyberduck'
