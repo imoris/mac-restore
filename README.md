@@ -13,6 +13,9 @@ $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/inst
 
 # install dropbox
 $ brew cask install dropbox
+
+# install yarn
+$ brew yarn --ignore-dependencies
 ```
 
 ## アプリ再インストール / dotfilesリストア手順
