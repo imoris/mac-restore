@@ -14,7 +14,6 @@ brew 'telnet'
 # フロントエンド系は入れる
 brew 'nodebrew'
 
-cask 'bettertouchtool'
 cask 'cyberduck'
 cask 'docker'
 cask 'github'
