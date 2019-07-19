@@ -30,7 +30,8 @@ $ mackup restore
 ```
 
 ## 他実施事項
-- app storeでbettersnaptoolをダウンロード
+- app storeでbettersnaptoolをダウンロード＆インストール
+- google日本語入力をダウンロード＆インストール
 - karabinerのsimple modificationでApple Internal Keyboardに対してcaps_lockとleft_controlを入れ替え
 - 設定 => Keyboard => Shortcutsでoption + spacebarでspotlight起動 
 - 設定 => Mouse => Scroll Direction: Naturalのチェックを外す
