@@ -29,6 +29,11 @@ $ brew bundle
 $ mackup restore
 ```
 
+## 他実施事項
+- app storeでbettersnaptoolをダウンロード
+- karabinerのsimple modificationでApple Internal Keyboardに対してcaps_lockとleft_controlを入れ替え
+- 設定 => Keyboard => Shortcutsでoption + spacebarでspotlight起動 
+
 
  
 
