@@ -33,6 +33,8 @@ $ mackup restore
 - app storeでbettersnaptoolをダウンロード
 - karabinerのsimple modificationでApple Internal Keyboardに対してcaps_lockとleft_controlを入れ替え
 - 設定 => Keyboard => Shortcutsでoption + spacebarでspotlight起動 
+- 設定 => Mouse => Scroll Direction: Naturalのチェックを外す
+- 設定 => Trackpad => Point&Click => secondary click (右下端をクリック）へ変更、Tap to Clickにチェックを入れる
 
 
  
