@@ -32,8 +32,10 @@ $ mackup restore
 ## 他実施事項
 - app storeでbettersnaptoolをダウンロード＆インストール
 - google日本語入力をダウンロード＆インストール
-- karabinerのsimple modificationでApple Internal Keyboardに対してcaps_lockとleft_controlを入れ替え
+- karabiner-elementsのsimple modificationでApple Internal Keyboardに対してcaps_lockとleft_controlを入れ替え
+- karabiner-elementsのFunction KeysでUse all F1, F2, etc. keys as standard function keysにチェックを入れる
 - 設定 => Keyboard => Shortcutsでoption + spacebarでspotlight起動
+- 設定 => Keyboard => Shortcuts => Input SourcesでSelect the previous input sourceのチェックを外す
 - 設定 => Keyboard => Input Source でU.S.およびHiragana(Google)以外の入力方法を削除する
 - 設定 => Mouse => Scroll Direction: Naturalのチェックを外す
 - 設定 => Trackpad => Point&Click => secondary click (右下端をクリック）へ変更、Tap to Clickにチェックを入れる
