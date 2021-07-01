@@ -1,5 +1,4 @@
 cask_args appdir: '/Applications'
-tap 'caskroom/cask'
 
 brew 'curl'
 brew 'git'
@@ -7,11 +6,9 @@ brew 'jq'
 brew 'mackup'
 brew 'mas'
 brew 'openssl'
-brew 'rmtrash'
-brew 'sshrc'
 brew 'telnet'
 
-# フロントエンド系は入れる
+# フロントエンド系
 brew 'nodebrew'
 
 cask 'cyberduck'
