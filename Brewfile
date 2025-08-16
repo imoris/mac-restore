@@ -1,32 +1,42 @@
-cask_args appdir: '/Applications'
-
-brew 'curl'
-brew 'git'
-brew 'jq'
-brew 'mackup'
-brew 'mas'
-brew 'openssl'
-brew 'telnet'
-
-# フロントエンド系
-brew 'nodebrew'
-
-cask 'cyberduck'
-cask 'docker'
-cask 'github'
-cask 'google-chrome'
-cask 'google-japanese-ime'
-cask 'google-cloud-sdk'
-cask 'karabiner-elements'
-cask 'ngrok'
-cask 'visual-studio-code'
-cask 'slack'
-cask 'box-sync'
-cask 'postman'
-cask 'evernote'
-cask 'parallels'
-cask 'zoomus'
-cask 'hyperswitch'
-cask 'iterm2'
-cask 'coteditor'
-cask 'discord'
+tap "homebrew/bundle"
+brew "cask"
+brew "certifi"
+brew "cmake"
+brew "curl"
+brew "gh"
+brew "git"
+brew "jq"
+brew "python@3.13"
+brew "llvm"
+brew "mackup"
+brew "mas"
+brew "nodebrew"
+brew "pipx"
+brew "protobuf"
+brew "pyenv"
+brew "rust"
+brew "telnet"
+brew "wget"
+cask "1password"
+cask "adobe-acrobat-reader"
+cask "chatgpt"
+cask "claude"
+cask "coteditor", args: { appdir: "/Applications" }
+cask "cursor"
+cask "docker-desktop"
+cask "google-drive", args: { appdir: "/Applications" }
+cask "hyperswitch", args: { appdir: "/Applications" }
+cask "iterm2", args: { appdir: "/Applications" }
+cask "karabiner-elements", args: { appdir: "/Applications" }
+cask "miro"
+cask "ngrok"
+cask "notion"
+cask "obsidian"
+cask "postman", args: { appdir: "/Applications" }
+cask "slack"
+cask "tandem"
+cask "visual-studio-code", args: { appdir: "/Applications" }
+cask "wrike"
+mas "GarageBand", id: 682658836
+mas "Kindle", id: 302584613
+vscode "saoudrizwan.claude-dev"
