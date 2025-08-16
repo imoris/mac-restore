@@ -1,33 +1,95 @@
 # Macbook再インストール時設定手順
 
-## 前準備
-- 移行元Macでmackup実行
-``` bash
-$ mackup backup
+## 注意事項
+### 1. 背景と問題点
+- Mackup は設定ファイルをクラウドストレージ（Dropbox/Google Drive/iCloudなど）に symlink で退避します。
+- **Sequoia 以降**はセキュリティ強化により、  
+  - DriverKit/アクセシビリティ経由のプロセス  
+  - root 権限で動く補助プロセス  
+  がクラウド配下の symlink を読めなくなるケースが多発。  
+- 結果：**Karabiner / BetterSnapTool / BetterTouchTool / Zoom / Spotify / iTerm2 / VSCode / Cursor** などが設定を読み込めず挙動不良。
+
+### 2. 運用方針
+- **Mackupの保存先は必ずローカル**（例: `~/mackup_backup`）にする  
+- クラウド（Google Drive 等）はあくまで **コピー置き場**  
+- **権限が絡むアプリは Mackup から除外し、手動コピー**
+
+### 3. `.mackup.cfg` 設定例
+```ini
+[storage]
+engine = file_system
+path = ~/mackup_backup
+
+[applications_to_ignore]
+karabiner-elements
+bettersnaptool
+bettertouchtool
+zoom
+spotify
+vscode
+cursor
+iterm2
+git
 ```
 
-- 移行先MacでのhomebrewおよびDropboxのinstall
-``` bash
-# install homebrew
-$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-# install dropbox
-$ brew cask install dropbox
-
-# install yarn
-$ brew yarn --ignore-dependencies
+### 4. バックアップ手順（旧端末側）
+```bash
+mkdir -p ~/mackup_backup
+mackup backup
+cd ~
+tar -czf mackup_backup_$(date +%Y%m%d).tar.gz mackup_backup
+# Google Drive の実際のマウント先に移動
+mv mackup_backup_*.tar.gz ~/Library/CloudStorage/GoogleDrive-<アカウント>/My\ Drive/backup/
 ```
 
-## アプリ再インストール / dotfilesリストア手順
-``` bash
-$ cd [where Brewfile is located]
+### 5. 復元手順（新端末側）
 
-# install necessary apps
-$ brew bundle
+```bash
+# 1. Homebrew をインストール
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install mackup
 
-# dotfilesのリストア
-$ mackup restore
+# 2. バックアップを展開
+cd ~
+tar -xzf mackup_backup_YYYYMMDD.tar.gz
+
+# 3. ~/.mackup.cfg を編集し、保存先を ~/mackup_backup に合わせる
+vi ~/.mackup.cfg
+
+# 4. 復元
+mackup restore
 ```
+
+### 6. 安全性チェック
+- Terminal に Full Disk Access を付与してから実行
+```bash
+while IFS= read -r l; do
+  tgt=$(readlink "$l")
+  case "$tgt" in
+    *"/CloudStorage/"*|*"/Google Drive/"*|*"/GoogleDrive-"*|*"/Dropbox/"*|*"/OneDrive/"*|*"/Documents/mackup_"* )
+      printf '[RISK] %s -> %s\\n' "$l" "$tgt";;
+  esac
+done <<EOF
+$(find "$HOME/Library/Preferences" "$HOME/Library/Application Support" "$HOME/.config" -type l 2>/dev/null)
+EOF
+```
+
+### 7. 再承認が必要な権限例
+- BetterTouchTool / BetterSnapTool / Karabiner → アクセシビリティ
+- Zoom → 画面収録・マイク・カメラ
+
+### 8. よくある注意点
+- JSON の lint は jq を使用（plutil は plist 用）
+- iTerm2 DynamicProfiles は ~/Library/Application Support/iTerm2/DynamicProfiles に置く
+- Brewアプリは brew bundle dump --file=~/Brewfile で管理し、復元は brew bundle --file=~/Brewfile
+
+### 9. 推奨ワークフロー
+- 旧Macで mackup backup → ローカル保存
+- ~/mackup_backup を tar.gz に固めてクラウドへ
+- 新Macで展開 → mackup restore
+- 除外アプリは手動コピー
+- RISKチェックで symbolic link が残っていないことを確認
+- 各アプリを再起動 & 権限を再承認
 
 ## 他実施事項
 - app storeでbettersnaptoolをダウンロード＆インストール
